@@ -1,11 +1,15 @@
+import math
 def solution(progresses, speeds):
     answer = []
-    days = list(map(lambda x, y: (100 - x) // y if (100 - x) // y == (100 - x) / y else (100 - x) // y + 1 ,progresses, speeds))
+    days = list(math.ceil((100 - i) / j) for i, j in zip(progresses, speeds))
+    count = 0
+    header = days[0]
     for i in days:
-        if len(answer) == 0:
-            answer.append(1)
-        elif days[sum(answer) - 1] >= i:
-            answer[len(answer)] += 1
+        if i <= header:
+            count += 1
         else:
-            answer.append(1)
+            header = i
+            answer.append(count)
+            count = 1
+    answer.append(count)
     return answer
