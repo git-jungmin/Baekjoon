@@ -7,7 +7,7 @@ def solution(cap, n, deliveries, pickups):
                     dist = i + 1
                 return current, dist, i + 1
         return current, dist, idx
-    
+
     answer = 0
     idx_d,idx_p = n,n
     while True:
